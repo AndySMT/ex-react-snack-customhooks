@@ -9,8 +9,9 @@ function useCustomPointer(content) {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
+    window.addEventListener("mousemove", handleMouseMove);
+
     return () => {
-      document.body.style.cursor = "";
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
@@ -20,7 +21,7 @@ function useCustomPointer(content) {
     left: position.x,
     top: position.y,
     transform: "translate(-50%, -50%)",
-    pointerEvents: "none",
+    cursor: "none",
     zIndex: 9999,
   };
 
